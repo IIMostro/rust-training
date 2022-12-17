@@ -35,6 +35,7 @@ impl Default for ServerState {
 
 #[tokio::main]
 async fn main() -> Result<()> {
+    // 日志初始化
     tracing_subscriber::registry()
         .with(tracing_subscriber::filter::LevelFilter::from(Level::INFO))
         .with(tracing_subscriber::fmt::layer())
@@ -43,12 +44,15 @@ async fn main() -> Result<()> {
     let state = Arc::new(ServerState::new());
     let addr = "0.0.0.0:8888";
     info!("Starting server in [{:?}]", addr);
+    // tcp监听
     let listener = TcpListener::bind(addr).await?;
     loop {
+        // 阻塞等待连接
         let (stream, socket_addr) = listener.accept().await?;
         info!("accept a new connection: [{:?} accept]", socket_addr);
         let share = state.clone();
         tokio::spawn(async move {
+            // 解包
             let mut stream = LengthDelimitedCodec::builder().length_field_length(2)
                 .new_framed(stream);
             while let Some(Ok(buf)) = stream.next().await {
