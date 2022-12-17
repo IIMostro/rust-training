@@ -2,5 +2,6 @@
 members=[
     "kv",
     "pow",
-    "prost-live"
+    "prost-live",
+    "axum-live"
 ]
