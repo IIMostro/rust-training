@@ -7,6 +7,5 @@ members=[
     "axum-ws-live",
     "everyday",
     "httpie",
-    "mysql-sample-wasi",
     "redis-script"
 ]
