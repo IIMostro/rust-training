@@ -1,0 +1,12 @@
+[workspace]
+members=[
+    "kv",
+    "pow",
+    "prost-live",
+    "axum-live",
+    "axum-ws-live",
+    "everyday",
+    "httpie",
+    "mysql-sample-wasi",
+    "redis-script"
+]

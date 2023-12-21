@@ -1,0 +1,35 @@
+syntax="proto3";
+
+package abi;
+
+service PowBuilder{
+  rpc Subscribe(ClientInfo) returns (stream BlockHash);
+  rpc Submit(Block) returns (BlockStatus);
+}
+
+// 请求参数，只有一个数据
+message Block {
+  bytes data = 1;
+}
+
+// 返回计算状态
+message BlockStatus {
+  uint32 status = 1;
+}
+
+// 主机信息
+message ClientInfo{
+  string name = 1;
+}
+
+// 返回值
+message BlockHash {
+  // block data 的一次hash值
+  bytes id = 1;
+  // 计算到符合hash值
+  bytes hash = 2;
+  // 计算次数
+  uint32 nonce = 3;
+}
+
+

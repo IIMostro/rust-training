@@ -1,0 +1,25 @@
+syntax="proto3";
+
+package abi;
+
+message Request{
+  oneof command{
+    RequestGet get= 1;
+    ResponsePut put = 2;
+  }
+}
+
+message Response{
+  uint32 code = 1;
+  string key = 2;
+  bytes value = 3;
+}
+
+message RequestGet{
+  string key = 1;
+}
+
+message ResponsePut{
+  string key = 1;
+  bytes value = 2;
+}

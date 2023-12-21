@@ -1,0 +1,13 @@
+[package]
+name = "axum-live"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = {version = "0.5.11", features = ["headers"]}
+serde = { version = "1.0.138", features = ["derive"] }
+tokio = {version = "1.19.2", features = ["full"]}
+anyhow = "1.0.51"
+jsonwebtoken = "8.1.1"
