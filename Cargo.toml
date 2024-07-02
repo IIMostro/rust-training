@@ -1,5 +1,5 @@
 [workspace]
-members=[
+members = [
     "kv",
     "pow",
     "prost-live",
@@ -7,5 +7,5 @@ members=[
     "axum-ws-live",
     "everyday",
     "httpie",
-    "redis-script"
-]
+    "redis-script",
+    "redis-live"]

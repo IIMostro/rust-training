@@ -1,6 +1,7 @@
 mod collections;
 mod lifecycle;
 mod closure;
+mod logging;
 
 #[cfg(test)]
 mod tests {

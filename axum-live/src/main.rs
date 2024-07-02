@@ -3,7 +3,7 @@ use std::sync::{Arc, RwLock};
 use std::sync::atomic::{AtomicUsize, Ordering};
 use anyhow::Result;
 use axum::{Router, Server, routing::get, routing::post, Json, async_trait, TypedHeader, Extension};
-use axum::extract::{FromRequest, RequestParts};
+use axum::extract::{FromRequest, Path, RequestParts};
 use axum::headers::{Authorization, authorization::Bearer};
 use axum::http::{StatusCode};
 use axum::response::{IntoResponse, Response};
@@ -24,7 +24,8 @@ async fn main() -> Result<()>{
         .route("/list", get(list_handler).layer(Extension(store.clone())))
         .route("/detail", get(detail_handler).layer(Extension(store.clone())))
         .route("/create_todo", post(create_todo_handler).layer(Extension(store.clone())))
-        .route("/login", post(login_handler));
+        .route("/login", post(login_handler))
+        .route("/api/*path", get(path_handler));
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     println!("Listening on {}", addr);
     Server::bind(&addr).serve(router.into_make_service()).await?;
@@ -166,4 +167,8 @@ async fn login_handler(Json(login): Json<LoginRequest>) -> Json<LoginResponse>{
     Json(LoginResponse{
         token,
     })
+}
+
+async fn path_handler(path: Path<String>) -> Json<String> {
+    Json(format!("path: {}", path.0))
 }
