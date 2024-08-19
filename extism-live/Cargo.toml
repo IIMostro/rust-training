@@ -1,0 +1,9 @@
+[package]
+name = "extism-live"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.86"
+extism = "1.5.0"
+tokio = { version = "1.39.2", features = ["full"] }

@@ -8,4 +8,4 @@ members = [
     "everyday",
     "httpie",
     "redis-script",
-    "redis-live"]
+    "redis-live", "etcd-live", "pingora-live", "sample-wasm", "wasmtime-live", "extism-live"]

@@ -1,0 +1,16 @@
+[package]
+name = "pingora-live"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.80"
+tokio = { version = "1.16.1", features = ["full"] }
+log = "0.4.21"
+tracing="0.1.40"
+tracing-subscriber = {version = "0.3.18", default-features = false, features = ["alloc", "fmt"]}
+pingora-core = "0.2"
+pingora-http = "0.2"
+pingora-load-balancing = "0.2"
+pingora-proxy= "0.2"
+structopt = "0.3.26"
