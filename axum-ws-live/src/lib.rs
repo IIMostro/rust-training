@@ -13,6 +13,7 @@ use tracing::warn;
 pub use msg::{Msg, MsgData};
 
 mod msg;
+mod tracing_test;
 
 const CAPACITY: usize = 64;
 

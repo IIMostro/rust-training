@@ -5,8 +5,11 @@ fn main() {
 #[cfg(test)]
 mod  tests {
     use std::collections::HashMap;
+    use std::fs;
     use anyhow::Result;
     use extism::{Manifest, Plugin, Wasm};
+    use tokio::fs::File;
+    use tokio::io::AsyncReadExt;
 
     #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
     async fn test_sample_should_work() -> Result<()> {
@@ -29,6 +32,12 @@ mod  tests {
         let url = Wasm::file("../wasm/count_vowels.wasm");
         let manifest = Manifest::new([url]);
         let mut plugin = Plugin::new(&manifest, [], true).unwrap();
+        Ok(())
+    }
+
+    #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
+    async fn test_get_file_should_work() -> Result<()> {
+        println!("{:?}", fs::read_to_string("config.yaml")?);
         Ok(())
     }
 }

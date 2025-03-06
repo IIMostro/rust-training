@@ -2,12 +2,12 @@ mod collections;
 mod lifecycle;
 mod closure;
 mod logging;
+mod genericity;
 
 #[cfg(test)]
 mod tests {
     use std::cell::RefCell;
     use std::fs;
-    use reqwest;
     use html2md;
     use super::*;
 

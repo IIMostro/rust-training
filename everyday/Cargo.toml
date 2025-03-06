@@ -12,3 +12,4 @@ tracing="0.1.40"
 log="0.4.14"
 tracing-subscriber = { version = "0.3.18", default-features = false, features = ["alloc","fmt"] }
 tokio = { version = "1", features = ["full"] }
+anyhow = "1.0.86"

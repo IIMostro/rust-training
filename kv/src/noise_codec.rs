@@ -50,29 +50,31 @@ enum NoiseState {
 
 impl NoiseState {
     fn write_message(&mut self, message: &[u8], output: &mut [u8]) -> Result<usize> {
-        match self {
-            NoiseState::Handshake(state) => {
-                let (len, _) = state.write_message(message, output)?;
-                Ok(len)
-            }
-            NoiseState::Transport(state) => {
-                let (len, _) = state.write_message(message, output)?;
-                Ok(len)
-            }
-        }
+        // match self {
+        //     NoiseState::Handshake(state) => {
+        //         let (len, _) = state.write_message(message, output)?;
+        //         Ok(len)
+        //     }
+        //     NoiseState::Transport(state) => {
+        //         let (len, _) = state.write_message(message, output)?;
+        //         Ok(len)
+        //     }
+        // }
+        Ok(0)
     }
 
     fn read_message(&mut self, message: &[u8], output: &mut [u8]) -> Result<usize> {
-        match self {
-            NoiseState::Handshake(state) => {
-                let (len, _) = state.read_message(message, output)?;
-                Ok(len)
-            }
-            NoiseState::Transport(state) => {
-                let (len, _) = state.read_message(message, output)?;
-                Ok(len)
-            }
-        }
+        // match self {
+        //     NoiseState::Handshake(state) => {
+        //         let (len, _) = state.read_message(message, output)?;
+        //         Ok(len)
+        //     }
+        //     NoiseState::Transport(state) => {
+        //         let (len, _) = state.read_message(message, output)?;
+        //         Ok(len)
+        //     }
+        // }
+        Ok(0)
     }
 }
 

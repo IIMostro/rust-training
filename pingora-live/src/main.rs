@@ -1,5 +1,6 @@
 use std::sync::Arc;
 use std::time::Duration;
+
 use pingora_core::Error;
 use pingora_core::prelude::{background_service, HttpPeer, Server};
 use pingora_core::server::configuration::Opt;
@@ -73,5 +74,19 @@ fn main() {
     lb.add_tcp("0.0.0.0:6188");
     server.add_service(lb);
     server.run_forever();
+}
+
+#[cfg(test)]
+mod tests {
+    use pingora_load_balancing::LoadBalancer;
+    use pingora_load_balancing::prelude::RoundRobin;
+
+    #[test]
+    pub fn test_from_iter_should_work(){
+        let upstreams:LoadBalancer<RoundRobin> = LoadBalancer::try_from_iter(["pay.closeli.cn:80", "pay.stg.closeli.cn:80"]).unwrap();
+        println!("{:?}", upstreams.backends().get_backend());
+        let a= upstreams.select(b"", 256).unwrap();
+        println!("hello world!")
+    }
 }
 
